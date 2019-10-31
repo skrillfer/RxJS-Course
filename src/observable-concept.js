@@ -5,15 +5,9 @@ import {Observable, observable } from 'rxjs';
 //Create a Observable
 const o = new Observable(
     (observer)=>{
-        setTimeout(
+        setInterval(
             () => {
-                observer.next('Observer1');
-                observer.next('Observer2');
-                observer.next('Observer3');
-                observer.next('Observer4');
-                observer.next('Observer5');
-                observer.complete();
-                observer.next('este se me olvido');
+                observer.next('Observable every second');
             }, 1000
         );
     }
@@ -37,7 +31,7 @@ p.then(
 );
 
 //Call Observable  subscribe(next,error,complete)
-o.subscribe(
+const subscription = o.subscribe(
     {
         next: (message)=>{
             add.li(message);
@@ -45,4 +39,10 @@ o.subscribe(
         error: (error)=> console.error(error),
         complete: ()=> add.li('This observable is complete!!')
     }
+);
+
+setTimeout(
+    ()=>{
+        subscription.unsubscribe();
+    },4000
 );
