@@ -1,5 +1,5 @@
 import {add} from './helpers';
-
+import {Observable} from 'rxjs';
 // function Observable(subscriber){
 //     subscriber.next('Hello Universe!');
 // }
@@ -16,14 +16,14 @@ const observer = {
 //observer.complete();
 //Observable(observer);
 
-class Observable{
-    constructor(subscribTo){
-        this.subscribTo = subscribTo;
-    }
-    subscribe(observer){
-        return this.subscribTo(observer);
-    }
-}
+// class Observable{
+//     constructor(subscribTo){
+//         this.subscribTo = subscribTo;
+//     }
+//     subscribe(observer){
+//         return this.subscribTo(observer);
+//     }
+// }
 
 const Producer = new Observable(
     (subscribe)=>{
