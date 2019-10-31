@@ -1,8 +1,8 @@
 import {add} from './helpers';
 
-function Observable(subscriber){
-    subscriber.next('Hello Universe!');
-}
+// function Observable(subscriber){
+//     subscriber.next('Hello Universe!');
+// }
 
 const observer = {
     next: add.li,
@@ -14,4 +14,23 @@ const observer = {
 
 //observer.next("Some Value");
 //observer.complete();
-Observable(observer);
+//Observable(observer);
+
+class Observable{
+    constructor(subscribTo){
+        this.subscribTo = subscribTo;
+    }
+    subscribe(observer){
+        return this.subscribTo(observer);
+    }
+}
+
+const Producer = new Observable(
+    (subscribe)=>{
+        subscribe.next("Hello from the Observable class");
+        subscribe.complete();
+        subscribe.next('Something I forgot');
+    }
+);
+
+Producer.subscribe(observer);
