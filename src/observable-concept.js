@@ -12,5 +12,6 @@ const observer = {
     }
 }
 
-observer.next("Some Value");
-observer.complete();
+//observer.next("Some Value");
+//observer.complete();
+Observable(observer);
